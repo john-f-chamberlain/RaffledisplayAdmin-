@@ -7,6 +7,8 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 // Views
 const Dashboard = () => import('@/views/Dashboard')
 
+const Tickets = () => import('@/views/tickets/Table');
+
 const Colors = () => import('@/views/theme/Colors')
 const Typography = () => import('@/views/theme/Typography')
 
@@ -75,6 +77,32 @@ export default new Router({
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
+        },
+        {
+          path: 'tickets',
+          redirect: '/tickets/list',
+          name: 'Tickets',
+          component: {
+            render (c)  {return c('router-view') }
+          },
+          children: [
+            {
+              path: 'list',
+              name: 'List',
+              component: Tickets
+            },
+            {
+              path: 'add',
+              name: 'Add',
+              component: Tickets
+            }
+            ,
+            {
+              path: 'edit',
+              name: 'Edit',
+              component: Tickets
+            }
+          ]
         },
         {
           path: 'theme',
