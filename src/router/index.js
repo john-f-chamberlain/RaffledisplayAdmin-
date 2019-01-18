@@ -7,7 +7,11 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 // Views
 const Dashboard = () => import('@/views/Dashboard')
 
-const Tickets = () => import('@/views/tickets/Table');
+const Tickets = () => import('@/views/tickets/List');
+const Tickets_Create = () => import('@/views/tickets/Create');
+
+const Baskets = () => import('@/views/baskets/List');
+const Basket_Create = () => import('@/views/baskets/Create');
 
 const Colors = () => import('@/views/theme/Colors')
 const Typography = () => import('@/views/theme/Typography')
@@ -94,7 +98,7 @@ export default new Router({
             {
               path: 'add',
               name: 'Add',
-              component: Tickets
+              component: Tickets_Create
             }
             ,
             {
@@ -104,6 +108,110 @@ export default new Router({
             }
           ]
         },
+          {
+              path: 'baskets',
+              redirect: '/baskets/list',
+              name: 'Baskets',
+              component: {
+                  render (c)  {return c('router-view') }
+              },
+              children: [
+                  {
+                      path: 'list',
+                      name: 'List',
+                      component: Baskets
+                  },
+                  {
+                      path: 'add',
+                      name: 'Add',
+                      component: Basket_Create
+                  }
+                  ,
+                  {
+                      path: 'edit',
+                      name: 'Edit',
+                      component: Tickets
+                  }
+              ]
+          },
+          {
+              path: 'customers',
+              redirect: '/customers/list',
+              name: 'Customers',
+              component: {
+                  render (c)  {return c('router-view') }
+              },
+              children: [
+                  {
+                      path: 'list',
+                      name: 'List',
+                      component: Tickets
+                  },
+                  {
+                      path: 'add',
+                      name: 'Add',
+                      component: Tickets
+                  }
+                  ,
+                  {
+                      path: 'edit',
+                      name: 'Edit',
+                      component: Tickets
+                  }
+              ]
+          },
+          {
+              path: 'Users',
+              redirect: '/users/list',
+              name: 'Users',
+              component: {
+                  render (c)  {return c('router-view') }
+              },
+              children: [
+                  {
+                      path: 'list',
+                      name: 'List',
+                      component: Tickets
+                  },
+                  {
+                      path: 'add',
+                      name: 'Add',
+                      component: Tickets
+                  }
+                  ,
+                  {
+                      path: 'edit',
+                      name: 'Edit',
+                      component: Tickets
+                  }
+              ]
+          },
+          {
+              path: 'settings',
+              redirect: '/settings/list',
+              name: 'Settings',
+              component: {
+                  render (c)  {return c('router-view') }
+              },
+              children: [
+                  {
+                      path: 'list',
+                      name: 'List',
+                      component: Tickets
+                  },
+                  {
+                      path: 'add',
+                      name: 'Add',
+                      component: Tickets
+                  }
+                  ,
+                  {
+                      path: 'edit',
+                      name: 'Edit',
+                      component: Tickets
+                  }
+              ]
+          },
         {
           path: 'theme',
           redirect: '/theme/colors',
